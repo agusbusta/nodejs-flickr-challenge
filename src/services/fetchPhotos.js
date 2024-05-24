@@ -1,5 +1,5 @@
 const axios = require('axios');
-const db = require('../config/db');
+const pool = require('../config/db');
 require('dotenv').config();
 
 async function fetchAndStorePhotos() {
@@ -18,10 +18,13 @@ async function fetchAndStorePhotos() {
         const photos = response.data.photos.photo.map(photo => ({
             published_date: new Date(),
             image_url: `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
-            tags: photo.tags.join(', ')
+            tags: photo.tags ? photo.tags.join(', ') : '' 
         }));
 
-        await db.query('INSERT INTO photos (published_date, image_url, tags) VALUES ?', [photos.map(photo => [photo.published_date, photo.image_url, photo.tags])]);
+        const query = 'INSERT INTO photos (published_date, image_url, tags) VALUES ?';
+        const values = photos.map(photo => [photo.published_date, photo.image_url, photo.tags]);
+
+        await pool.query(query, [values]);
     } catch (error) {
         console.error('Error fetching or storing photos:', error);
     }

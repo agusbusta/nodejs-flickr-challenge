@@ -12,9 +12,14 @@ app.use(express.static('public'));
 app.use('/photos', photoRoutes);
 app.use('/tags', tagRoutes);
 
-app.listen(3000, () => {
-    console.log('Server started on http://localhost:3000');
+app.listen(3006, () => {
+    console.log('Server started on http://localhost:3006');
     fetchAndStorePhotos();
 });
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+  });
+  
 
 module.exports = app;

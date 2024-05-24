@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#app {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#tags {
+    margin-bottom: 20px;
+}
+
+#photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.photo {
+    margin: 10px;
+}
+
+img {
+    max-width: 100%;
+}
+
+#pagination {
+    margin-top: 20px;
+}
