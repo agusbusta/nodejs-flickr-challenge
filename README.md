@@ -1,4 +1,4 @@
-Sure, here's the README.md in English:
+
 
 ```markdown
 # Node.js Flickr Challenge
