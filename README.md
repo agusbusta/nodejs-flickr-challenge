@@ -88,4 +88,3 @@ The server will start on `http://localhost:3006`.
 This project is licensed under the MIT License.
 ```
 
-Feel free to modify the instructions and project details according to your needs.
